@@ -1,0 +1,6 @@
+src/
+node_modules/
+.git/
+tsconfig.json
+package-lock.json
+.npmignore 

@@ -14,14 +14,14 @@ Provides abstractions for account management, peer-to-peer chat, and protocol-sp
 ## Installation
 
 ```bash
-npm install stem-sdk
+npm install @cherrydotfun/stem-sdk
 ```
 
 ## Usage
 
 ```ts
-import { Connection, Account } from "stem-sdk/dist/solana";
-import { Stem } from "stem-sdk/dist/stem";
+import { Connection, Account } from "@cherrydotfun/stem-sdk/dist/solana";
+import { Stem } from "@cherrydotfun/stem-sdk/dist/stem";
 import { PublicKey } from "@solana/web3.js";
 
 // Connect to Solana
