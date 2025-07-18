@@ -6,7 +6,7 @@ import {
 } from "@solana/web3.js";
 import { createHash } from "crypto";
 import * as borsh from "borsh";
-import { EventEmitter } from "events";
+import { EventEmitter } from "./events";
 
 import { Account, Connection } from "./solana";
 import { ChatSchema, DescriptorSchema } from "./schemas";
@@ -14,7 +14,6 @@ import type { DescriptorBorsh, ChatBorsh } from "./types";
 import { PeerStatus } from "./types";
 
 import { PROGRAM_ID, SEED_DESCRIPTOR, SEED_PRIVATE_CHAT } from "./const";
-
 
 export const helpers = {
   getdisc: (name: string) =>

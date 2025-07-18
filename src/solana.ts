@@ -4,9 +4,13 @@ import {
   PublicKey,
 } from "@solana/web3.js";
 
-import type { AccountInfo, Commitment, Transaction as Web3Transaction } from "@solana/web3.js";
+import type {
+  AccountInfo,
+  Commitment,
+  Transaction as Web3Transaction,
+} from "@solana/web3.js";
 
-import { EventEmitter } from "events";
+import { EventEmitter } from "./events";
 
 /**
  * Account class
@@ -209,7 +213,9 @@ export class Signature {
   }
 
   async fetch() {
-    const signatureResult = await this._connection.getSignatureStatus(this._signature);
+    const signatureResult = await this._connection.getSignatureStatus(
+      this._signature
+    );
     console.log("SOLANA: Signature fetched", signatureResult);
     this._update(signatureResult.value);
     this._isInitialized = true;
@@ -219,7 +225,6 @@ export class Signature {
   }
 
   confirm(commitment: Commitment = "finalized") {
-
     return new Promise(async (resolve, reject) => {
       if (!this._isInitialized) {
         await this.fetch();
@@ -233,13 +238,17 @@ export class Signature {
           reject(signature.err);
           this._emitter?.off("update", updateListener);
         }
-      }
+      };
       this._emitter?.on("update", updateListener);
 
-      this._connection.onSignature(this._signature, async () => {
-        await this.fetch();
-        this._emitter?.emit("update", this);
-      }, commitment);
+      this._connection.onSignature(
+        this._signature,
+        async () => {
+          await this.fetch();
+          this._emitter?.emit("update", this);
+        },
+        commitment
+      );
     });
   }
 }
