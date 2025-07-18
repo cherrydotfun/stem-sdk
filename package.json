@@ -1,7 +1,7 @@
 {
   "name": "@cherrydotfun/stem-sdk",
   "scope": "@cherrydotfun",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SDK for the Stem protocol on Solana: account abstractions, peer-to-peer chat, protocol transactions.",
   "license": "MIT",
   "author": "Cherry(dot)fun Developers",
